@@ -8,14 +8,14 @@ use core::convert::TryFrom;
 pub struct U7(pub(crate) u8);
 
 /// Error representing that this value is not a valid u7
-pub struct InvalidU7(u8);
+pub struct InvalidU7;
 
 impl TryFrom<u8> for U7 {
     type Error = InvalidU7;
 
     fn try_from(value: u8) -> Result<Self, Self::Error> {
         if value > 0x7F {
-            Err(InvalidU7(value))
+            Err(InvalidU7)
         } else {
             Ok(U7(value))
         }

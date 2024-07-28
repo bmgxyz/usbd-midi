@@ -6,14 +6,14 @@ use core::convert::TryFrom;
 pub struct U4(u8);
 
 /// Error representing that this value is not a valid u4
-pub struct InvalidU4(u8);
+pub struct InvalidU4;
 
 impl TryFrom<u8> for U4 {
     type Error = InvalidU4;
 
     fn try_from(value: u8) -> Result<Self, Self::Error> {
         if value > U4::MAX.0 {
-            Err(InvalidU4(value))
+            Err(InvalidU4)
         } else {
             Ok(U4(value))
         }

@@ -9,13 +9,13 @@ use core::convert::TryFrom;
 pub struct CodeIndexNumber(u8);
 
 /// Error indicating an invalid code index number.
-pub struct InvalidCodeIndexNumber(u8);
+pub struct InvalidCodeIndexNumber;
 
 impl TryFrom<u8> for CodeIndexNumber {
     type Error = InvalidCodeIndexNumber;
     fn try_from(value: u8) -> Result<Self, Self::Error> {
         if value > 0xF {
-            Err(InvalidCodeIndexNumber(value))
+            Err(InvalidCodeIndexNumber)
         } else {
             Ok(CodeIndexNumber(value))
         }

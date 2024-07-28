@@ -44,7 +44,7 @@ pub enum Channel {
 }
 
 /// Error indicating an invalid MIDI channel.
-pub struct InvalidChannel(u8);
+pub struct InvalidChannel;
 
 impl TryFrom<u8> for Channel {
     type Error = InvalidChannel;
@@ -66,7 +66,7 @@ impl TryFrom<u8> for Channel {
             x if x == Channel::Channel14 as u8 => Ok(Channel::Channel14),
             x if x == Channel::Channel15 as u8 => Ok(Channel::Channel15),
             x if x == Channel::Channel16 as u8 => Ok(Channel::Channel16),
-            _ => Err(InvalidChannel(value)),
+            _ => Err(InvalidChannel),
         }
     }
 }

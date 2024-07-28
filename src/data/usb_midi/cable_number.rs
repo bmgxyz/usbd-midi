@@ -29,7 +29,7 @@ pub enum CableNumber {
 }
 
 /// Error indicating an invalid cable number.
-pub struct InvalidCableNumber(u8);
+pub struct InvalidCableNumber;
 
 impl TryFrom<u8> for CableNumber {
     type Error = InvalidCableNumber;
@@ -51,7 +51,7 @@ impl TryFrom<u8> for CableNumber {
             x if x == CableNumber::Cable13 as u8 => Ok(CableNumber::Cable13),
             x if x == CableNumber::Cable14 as u8 => Ok(CableNumber::Cable14),
             x if x == CableNumber::Cable15 as u8 => Ok(CableNumber::Cable15),
-            _ => Err(InvalidCableNumber(value)),
+            _ => Err(InvalidCableNumber),
         }
     }
 }
